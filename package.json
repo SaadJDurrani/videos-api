@@ -1,15 +1,19 @@
 {
   "name": "videos-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "build:clean": "rm -rf dist && tsc",
+    "debug": "ts-node-dev --respawn --inspect=5858 ./src/main.ts",
+    "dev": "ts-node-dev --respawn ./src/main.ts",
+    "pretty": "prettier --write \"src/**/*.+(ts|js)\"",
+    "serve": "node dist/main.js",
+    "start": "ts-node-dev ./src/main.ts"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "devDependencies": {
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
   }
 }
