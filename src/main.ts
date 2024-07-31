@@ -1,5 +1,18 @@
 import "./absolutePathAlias"; // Always import at the top
 
-console.log("Hello 2");
-// const a = 3;
-console.log("Hello 3");
+import * as express from "express";
+
+const PORT = 3000;
+const app = express();
+
+function getController(_req: express.Request, res: express.Response) {
+  res.send("Hello World");
+}
+app.get("/", getController);
+app.get("/video", (_req, res) => {
+  res.send({ videoURL: "hdashdhsadh" });
+});
+
+app.listen(PORT, () => {
+  console.log(`App listening at http://127.0.0.1:${PORT}`);
+});
