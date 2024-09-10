@@ -7,6 +7,7 @@ import {
   getAllUsers,
   getAllVideos,
   getUserById,
+  updateUserLikedArray,
 } from "./Controllers";
 import { configDB } from "./db.config";
 
@@ -25,7 +26,7 @@ app.get("/videos", getAllVideos);
 app.get("/users", getAllUsers);
 app.get("/users/:id", getUserById);
 app.post("/users", addUserToDb);
-
+app.patch("/users/:id", updateUserLikedArray);
 // app.post("/video", (req, res) => {
 //   console.log(req.body);
 //   res.send({ videoURL: "hdashdhsadh", payload: req.body });

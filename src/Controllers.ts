@@ -24,7 +24,7 @@ export async function getAllVideos(_req: Request, res: Response) {
 
 export async function getUserById(req: Request, res: Response) {
   try {
-    const user = await UserModel.findOne({ id: req.params["id"] });
+    const user = await UserModel.findOne({ _id: req.params["id"] });
     res.send(user);
   } catch (error: any) {
     console.log(error);
@@ -38,6 +38,23 @@ export async function addUserToDb(req: Request, res: Response) {
     res.send(newUser);
   } catch (error: any) {
     console.log(error);
+    res.send({ error: error.message });
+  }
+}
+
+export async function updateUserLikedArray(req: Request, res: Response) {
+  try {
+    const { Liked } = req.body;
+    console.log("updateeeeeeeeeee");
+
+    const updateUser = await UserModel.findByIdAndUpdate(
+      { _id: req.params["id"] },
+      { Liked },
+      { new: true, runValidators: true }
+    );
+    console.log(updateUser);
+    res.send(updateUser);
+  } catch (error: any) {
     res.send({ error: error.message });
   }
 }
