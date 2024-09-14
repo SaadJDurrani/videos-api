@@ -7,10 +7,10 @@ import {
   getAllUsers,
   getAllVideos,
   getUserById,
+  getVideoById,
   updateUserLikedArray,
 } from "./Controllers";
 import { configDB } from "./db.config";
-
 const PORT = process.env["PORT"] || 4000;
 const app = express();
 
@@ -27,6 +27,7 @@ app.get("/users", getAllUsers);
 app.get("/users/:id", getUserById);
 app.post("/users", addUserToDb);
 app.patch("/users/:id", updateUserLikedArray);
+app.get("/videos/:id", getVideoById);
 // app.post("/video", (req, res) => {
 //   console.log(req.body);
 //   res.send({ videoURL: "hdashdhsadh", payload: req.body });

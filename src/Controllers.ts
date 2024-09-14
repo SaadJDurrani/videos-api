@@ -58,3 +58,13 @@ export async function updateUserLikedArray(req: Request, res: Response) {
     res.send({ error: error.message });
   }
 }
+
+export async function getVideoById(req: Request, res: Response) {
+  try {
+    const video = await videoModel.findById({ _id: req.params["id"] });
+    console.log(video);
+    res.send(video);
+  } catch (error: any) {
+    res.send({ error: error.message });
+  }
+}
